@@ -10,7 +10,11 @@ use std::{error::Error as StdError, io::Cursor};
 ///
 /// The trait is generic over the types of `Query` `Q`, `Response` `R`,
 /// Serialization Error `SE`, and Deserialization Error `DE`.
-pub trait Parser<'a, Q: Query + Send + Sync + Sized + 'a, R: Response + Send + Sync + 'a> {
+pub trait Parser<'a, Q, R>
+where
+    Q: Query + 'a,
+    R: Response + 'a,
+{
     /// The type for serialization errors.
     type SE: StdError + 'static;
 

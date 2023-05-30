@@ -12,14 +12,17 @@ use async_trait::async_trait;
 ///
 /// This trait uses associated types for Query `Q`, Response `R`, Parser `P` and Error `E` allowing flexibility for various network protocols.
 #[async_trait]
-pub trait Protocol<'a> {
+pub trait Protocol<'a> 
+where
+    Self: Send + Sync + Sized,
+{
     /// The type of query that can be sent over this protocol.
     /// It must be thread-safe and have a statically known size.
-    type Q: Query + Send + Sync + Sized + 'a;
+    type Q: Query + 'a;
 
     /// The type of response that can be received over this protocol.
     /// It must be thread-safe.
-    type R: Response + Send + Sync + 'a;
+    type R: Response + 'a;
 
     /// The type of parser that can parse a Query into a specific type and a response into a Response type.
     type P: Parser<'a, Self::Q, Self::R>;

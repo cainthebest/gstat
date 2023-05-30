@@ -10,7 +10,10 @@ use async_trait::async_trait;
 /// It also provides associated constants for the game's name and the year it was released,
 /// and a method to fetch data from a game server.
 #[async_trait]
-pub trait Game<'a, P: Protocol<'a> + Send + Sync> {
+pub trait Game<'a, P>
+where
+    P: Protocol<'a>,
+{
     /// The name of the game.
     const GAME_NAME: &'static str;
 

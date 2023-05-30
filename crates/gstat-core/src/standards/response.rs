@@ -5,7 +5,10 @@ use std::error::Error as StdError;
 /// The `Response` trait represents a type that encapsulates the data received from a protocol.
 ///
 /// This trait is generic over the type of Response Error `E`.
-pub trait Response: Sized {
+pub trait Response 
+where
+    Self: Send + Sync + Sized,
+{
     /// The type for response errors.
     type E: StdError + 'static;
 

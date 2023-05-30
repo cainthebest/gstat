@@ -5,7 +5,10 @@ use std::error::Error as StdError;
 /// A `Query` trait represents a type that can be instantiated and then sent to a protocol.
 ///
 /// This trait is generic over the type of Query Error `E`.
-pub trait Query: Sized {
+pub trait Query
+where
+    Self: Send + Sync + Sized,
+ {
     /// The type for query errors.
     type E: StdError + 'static;
 
