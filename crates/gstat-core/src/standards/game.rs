@@ -19,9 +19,9 @@ pub trait Game<'a, P: Protocol<'a> + Send + Sync> {
 
     /// Provides a new instance of the protocol.
     ///
-    /// This method is intended to allow the use of the protocol in the `fetch`
+    /// This internal method is intended to allow the use of the protocol in the `fetch`
     /// method without causing lifetime issues or requiring cloning.
-    fn protocol(&self) -> P;
+    fn _protocol(&self) -> P;
 
     /// Fetches data from the game server.
     ///
@@ -43,7 +43,7 @@ pub trait Game<'a, P: Protocol<'a> + Send + Sync> {
     ///
     /// A `Result` containing either the parsed server response or an `Error`.
     async fn fetch(&'a self, query: P::Q, address: SocketAddr) -> Result<P::R, Error<P::E>> {
-        let protocol = self.protocol();
+        let protocol = self._protocol();
 
         protocol.connect(address).await?;
         protocol.send_query(query).await?;
