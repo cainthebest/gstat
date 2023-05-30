@@ -1,4 +1,5 @@
 use crate::prelude::{Error, ErrorDetail, Query, Response};
+
 use std::{error::Error as StdError, io::Cursor};
 
 /// `Parser` is a trait which outlines the necessary methods for
