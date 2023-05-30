@@ -1,4 +1,4 @@
-use crate::Error;
+use crate::prelude::Error;
 
 use std::error::Error as StdError;
 
