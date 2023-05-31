@@ -12,7 +12,7 @@ Please note that this project adheres to the Contributor Covenant Code of Conduc
 
 ## Goals
 
-- [ ] Create a standard for the main aspects of a game server query (e.g. protocol, query, response, etc).
+- [ ] Create a standard across the lib for the main aspects of a game server query (e.g. protocol, query, response, etc).
 - [ ] Insure that the standard is flexible enough to be used for all types of games (With the exception of games that use a proprietary protocol that cannot be reverse engineered or games that do not use a query/response system).
 - [ ] Stick to a modular design that allows for easy addition of new games, protocols, and tools.
 - [ ] Support FFI for use in other languages (e.g. Dynamic libraries for C/C++, bindings for other languages, etc).
